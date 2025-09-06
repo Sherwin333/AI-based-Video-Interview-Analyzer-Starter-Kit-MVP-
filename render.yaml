@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: interview-backend
+    env: node
+    repo: https://github.com/Sherwin333/AI-based-Video-Interview-Analyzer-Starter-Kit-MVP-
+    branch: main
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
