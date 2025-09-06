@@ -2,31 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional: you can keep or tweak these custom overrides */
+/* Global font + smoothing */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Color tokens (optional tweakable theme vars) */
+  --bg-gradient: linear-gradient(to bottom, #0f172a, #1e1b4b, #0f172a);
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --text-color: rgba(255, 255, 255, 0.92);
 }
 
+/* Body aligned with gradient background */
 body {
-  @apply m-0 min-w-[320px] min-h-screen bg-gray-50 text-gray-900;
+  @apply m-0 min-w-[320px] min-h-screen;
+  background: var(--bg-gradient);
+  color: var(--text-color);
 }
 
+/* Links */
 a {
-  @apply font-medium text-indigo-600 hover:text-indigo-800 no-underline;
+  @apply font-medium transition-colors duration-200;
+  color: #818cf8; /* indigo-400 */
+}
+a:hover {
+  color: #a5b4fc; /* indigo-300 */
 }
 
+/* Headings */
 h1 {
-  @apply text-4xl font-bold leading-tight;
+  @apply text-4xl font-extrabold leading-tight;
+}
+h2 {
+  @apply text-2xl font-bold leading-snug;
+}
+h3 {
+  @apply text-lg font-semibold leading-snug;
 }
 
+/* Buttons: soft glassy design by default */
 button {
-  @apply rounded-lg px-4 py-2 text-base font-medium bg-gray-900 text-white 
-         hover:bg-gray-800 transition-colors duration-200;
+  @apply rounded-lg px-4 py-2 text-sm font-medium transition duration-200;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+button:active {
+  transform: scale(0.97);
+}
+
+/* Utility: glass card style */
+.glass-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  @apply rounded-2xl backdrop-blur-md shadow-lg;
+}
+
+/* Scrollbar styling for a cleaner feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.25);
 }
