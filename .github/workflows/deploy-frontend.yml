@@ -25,11 +25,11 @@ jobs:
 
       - name: Install frontend deps
         working-directory: ./frontend
-        run: npm ci
+        # use `npm install` so the job works even if a lockfile is not committed
+        run: npm install
 
       - name: Build frontend (Vite)
         working-directory: ./frontend
-        # Provide BACKEND_URL to the build so your app can call the backend
         env:
           REACT_APP_API_URL: ${{ secrets.BACKEND_URL }}
         run: npm run build
